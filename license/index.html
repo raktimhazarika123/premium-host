@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremiumHost License</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0078ff;
+            --primary-dark: #0062d3;
+            --secondary: #1e2a3b;
+            --light: #f7f9fc;
+            --dark: #101823;
+            --text: #4a5568;
+            --heading: #1a202c;
+            --success: #38b2ac;
+            --gray-100: #f7fafc;
+            --gray-200: #edf2f7;
+            --gray-300: #e2e8f0;
+            --gray-400: #cbd5e0;
+            --gray-800: #2d3748;
+        }
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            font-size: 16px;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2vw;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: clamp(18px, 3vw, 24px);
+        }
+
+        p {
+            margin-bottom: 24px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #000000;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: #000000;
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(20px, 5vw, 24px);
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .premium {
+            color: var(--primary);
+        }
+
+        .host {
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(14px, 2.5vw, 16px);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: clamp(14px, 2.5vw, 16px);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-left: auto;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 120, 255, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: clamp(20px, 5vw, 24px);
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* License-specific styles */
+        .license {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .license h1 {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .license h2 {
+            margin-top: 64px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .license p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .license pre {
+            background-color: var(--gray-200);
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            margin: 16px 0 32px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        .logo-image {
+            display: block;
+            margin: 0 auto 32px;
+            max-width: 150px;
+        }
+
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 48px;
+        }
+
+        .support-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 32px;
+            background-color: var(--gray-100);
+            border-radius: 12px;
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 80px 0 32px;
+            background-color: var(--secondary);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 14px);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom div {
+            text-align: center;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 16px;
+            }
+
+            .header-content {
+                padding: 0 12px;
+            }
+
+            .license {
+                max-width: 700px;
+                padding: 0 12px;
+            }
+
+            .support-section {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 0;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: #000000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                transition: left 0.3s ease;
+                padding: 80px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+                flex-grow: 0;
+            }
+
+            .nav-menu a {
+                font-size: clamp(18px, 4vw, 20px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 10px 20px;
+                font-size: clamp(14px, 3vw, 16px);
+                margin: 16px 0;
+                width: 200px;
+                margin-left: 0;
+            }
+
+            .license h1 {
+                margin-bottom: 24px;
+            }
+
+            .license h2 {
+                margin-top: 48px;
+                margin-bottom: 20px;
+            }
+
+            .license pre {
+                padding: 16px;
+                font-size: clamp(11px, 1.8vw, 13px);
+            }
+
+            .support-section {
+                padding: 20px;
+                margin-top: 60px;
+            }
+
+            .content {
+                padding: 80px 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .logo {
+                font-size: clamp(18px, 4vw, 20px);
+            }
+
+            .hamburger {
+                font-size: clamp(18px, 4vw, 20px);
+                right: 12px;
+            }
+
+            .nav-menu a {
+                font-size: clamp(16px, 4vw, 18px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 8px 16px;
+                font-size: clamp(13px, 3vw, 14px);
+                width: 180px;
+            }
+
+            .license {
+                padding: 0 8px;
+            }
+
+            .license h1 {
+                font-size: clamp(24px, 5vw, 30px);
+            }
+
+            .license h2 {
+                font-size: clamp(20px, 4vw, 24px);
+                margin-top: 40px;
+            }
+
+            .license p,
+            .license pre {
+                font-size: clamp(13px, 2.5vw, 14px);
+            }
+
+            .license pre {
+                padding: 12px;
+                font-size: clamp(10px, 1.8vw, 12px);
+            }
+
+            .support-section {
+                padding: 16px;
+                margin-top: 40px;
+            }
+
+            .content {
+                padding: 60px 0 !important;
+            }
+
+            .footer-bottom {
+                font-size: clamp(11px, 2vw, 12px);
+                padding: 0 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header {
+                padding: 8px 0;
+            }
+
+            .header-content {
+                padding: 0 8px;
+            }
+
+            .logo {
+                font-size: clamp(16px, 4vw, 18px);
+            }
+
+            .hamburger {
+                font-size: clamp(16px, 4vw, 18px);
+                right: 8px;
+            }
+
+            .nav-menu a {
+                font-size: clamp(14px, 4vw, 16px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 6px 12px;
+                font-size: clamp(12px, 3vw, 13px);
+                width: 160px;
+            }
+
+            .license {
+                padding: 0 6px;
+            }
+
+            .license h1 {
+                font-size: clamp(22px, 5vw, 26px);
+                margin-bottom: 20px;
+            }
+
+            .license h2 {
+                font-size: clamp(18px, 4vw, 22px);
+                margin-top: 32px;
+                margin-bottom: 16px;
+            }
+
+            .license p,
+            .license pre {
+                font-size: clamp(12px, 2.5vw, 13px);
+                line-height: 1.7;
+            }
+
+            .license pre {
+                padding: 10px;
+                font-size: clamp(9px, 1.8vw, 11px);
+                border-radius: 6px;
+            }
+
+            .support-section {
+                padding: 12px;
+                margin-top: 32px;
+                border-radius: 8px;
+            }
+
+            .content {
+                padding: 40px 0 !important;
+            }
+
+            .footer-bottom {
+                font-size: clamp(10px, 2vw, 11px);
+                padding: 0 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <span class="premium">PREMIUM</span><span class="host">HOST</span>
+                </a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+                <nav class="nav-menu">
+                   
+                    <a href="../index.html" class="btn btn-primary">Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="content" style="padding: 120px 0; background-color: var(--light);">
+        <div class="container">
+            <div class="license" data-aos="fade-up" data-aos-duration="800">
+                
+                <h1 data-aos="fade-down" data-aos-duration="800">PremiumHost License</h1>
+                <p class="tagline" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    Licensing information for the PremiumHost Website Template
+                </p>
+
+                <h2>License Terms</h2>
+                <p>You are free to use, modify, and distribute this template for both personal and commercial purposes, subject to the following terms:</p>
+                <pre>
+
+Copyright (c) 2025 PremiumHost
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use
+it for personal and commercial purposes, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, and sublicense the Software,
+and to permit persons to whom the Software is furnished to do so, provided that reselling the Software, whether in original or modified form, is strictly prohibited.
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+Resale of the Software is not allowed. This means you may not sell the Software itself, either on its own or as part of another product where the primary value is the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+                </pre>
+
+                <div class="support-section">
+                    <h2>Support</h2>
+                    <p>For inquiries, email <a href="mailto:support@premiumhost.com" class="btn btn-primary">support@premiumhost.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <div>© 2025 PremiumHost. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            // Toggle between hamburger and close icon
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>
