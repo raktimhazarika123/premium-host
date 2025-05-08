@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PremiumHost Template Documentation</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0078ff;
+            --primary-dark: #0062d3;
+            --secondary: #1e2a3b;
+            --light: #f7f9fc;
+            --dark: #101823;
+            --text: #4a5568;
+            --heading: #1a202c;
+            --success: #38b2ac;
+            --gray-100: #f7fafc;
+            --gray-200: #edf2f7;
+            --gray-300: #e2e8f0;
+            --gray-400: #cbd5e0;
+            --gray-800: #2d3748;
+        }
+
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text);
+            font-size: 16px;
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2vw;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--heading);
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+        }
+
+        h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            letter-spacing: -0.5px;
+        }
+
+        h3 {
+            font-size: clamp(18px, 3vw, 24px);
+        }
+
+        p {
+            margin-bottom: 24px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #000000;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: #000000;
+            padding: 15px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .logo {
+            font-size: clamp(20px, 5vw, 24px);
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            z-index: 1001;
+        }
+
+        .premium {
+            color: var(--primary);
+        }
+
+        .host {
+            color: white;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(14px, 2.5vw, 16px);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: clamp(14px, 2.5vw, 16px);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-left: auto;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 120, 255, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: clamp(20px, 5vw, 24px);
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Documentation Section */
+        .documentation {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .documentation h1 {
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .documentation h2 {
+            margin-top: 64px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .documentation h3 {
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .documentation p {
+            line-height: 1.8;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        .documentation ul.plan-features {
+            margin-bottom: 32px;
+            list-style: none;
+        }
+
+        .documentation ul.plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        .documentation ul.plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .documentation ol {
+            margin-bottom: 32px;
+            padding-left: 24px;
+        }
+
+        .documentation ol li {
+            margin-bottom: 16px;
+            line-height: 1.8;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        .documentation pre {
+            background-color: var(--gray-200);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: clamp(12px, 2vw, 14px);
+            margin: 16px 0 32px;
+            line-height: 1.6;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .documentation code {
+            background-color: var(--gray-200);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: clamp(12px, 2vw, 14px);
+        }
+
+        .logo-image {
+            display: block;
+            margin: 0 auto 32px;
+            max-width: 150px;
+            width: 100%;
+        }
+
+        .tagline {
+            text-align: center;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 48px;
+            font-size: clamp(14px, 2.5vw, 16px);
+        }
+
+        .support-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 32px;
+            background-color: var(--gray-100);
+            border-radius: 12px;
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 80px 0 32px;
+            background-color: var(--secondary);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: clamp(12px, 2vw, 14px);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom div {
+            text-align: center;
+        }
+
+        /* Responsive Navbar */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 16px;
+            }
+
+            .header-content {
+                padding: 0 12px;
+            }
+
+            .documentation {
+                max-width: 700px;
+                padding: 0 12px;
+            }
+
+            .support-section {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 0;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                right: 16px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: #000000;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                transition: left 0.3s ease;
+                padding: 80px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+                flex-grow: 0;
+            }
+
+            .nav-menu a {
+                font-size: clamp(18px, 4vw, 20px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 10px 20px;
+                font-size: clamp(14px, 3vw, 16px);
+                margin: 16px 0;
+                width: 200px;
+                margin-left: 0;
+            }
+
+            .documentation h1 {
+                margin-bottom: 24px;
+            }
+
+            .documentation h2 {
+                margin-top: 48px;
+                margin-bottom: 20px;
+            }
+
+            .documentation h3 {
+                margin-top: 32px;
+                margin-bottom: 12px;
+            }
+
+            .documentation pre {
+                padding: 16px;
+                font-size: clamp(11px, 1.8vw, 13px);
+            }
+
+            .support-section {
+                padding: 20px;
+                margin-top: 60px;
+            }
+
+            .content {
+                padding: 80px 0 !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .logo {
+                font-size: clamp(18px, 4vw, 20px);
+            }
+
+            .hamburger {
+                font-size: clamp(18px, 4vw, 20px);
+                right: 12px;
+            }
+
+            .nav-menu a {
+                font-size: clamp(16px, 4vw, 18px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 8px 16px;
+                font-size: clamp(13px, 3vw, 14px);
+                width: 180px;
+            }
+
+            .documentation {
+                padding: 0 8px;
+            }
+
+            .documentation h1 {
+                font-size: clamp(24px, 5vw, 30px);
+            }
+
+            .documentation h2 {
+                font-size: clamp(20px, 4vw, 24px);
+                margin-top: 40px;
+            }
+
+            .documentation h3 {
+                font-size: clamp(16px, 3vw, 18px);
+            }
+
+            .documentation p,
+            .documentation ul.plan-features li,
+            .documentation ol li {
+                font-size: clamp(13px, 2.5vw, 14px);
+            }
+
+            .documentation pre {
+                padding: 12px;
+                font-size: clamp(10px, 1.8vw, 12px);
+            }
+
+            .support-section {
+                padding: 16px;
+                margin-top: 40px;
+            }
+
+            .content {
+                padding: 60px 0 !important;
+            }
+
+            .footer-bottom {
+                font-size: clamp(11px, 2vw, 12px);
+                padding: 0 8px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            header {
+                padding: 8px 0;
+            }
+
+            .header-content {
+                padding: 0 8px;
+            }
+
+            .logo {
+                font-size: clamp(16px, 4vw, 18px);
+            }
+
+            .hamburger {
+                font-size: clamp(16px, 4vw, 18px);
+                right: 8px;
+            }
+
+            .nav-menu a {
+                font-size: clamp(14px, 4vw, 16px);
+            }
+
+            .nav-menu .btn-primary {
+                padding: 6px 12px;
+                font-size: clamp(12px, 3vw, 13px);
+                width: 160px;
+            }
+
+            .documentation {
+                padding: 0 6px;
+            }
+
+            .documentation h1 {
+                font-size: clamp(22px, 5vw, 26px);
+                margin-bottom: 20px;
+            }
+
+            .documentation h2 {
+                font-size: clamp(18px, 4vw, 22px);
+                margin-top: 32px;
+                margin-bottom: 16px;
+            }
+
+            .documentation h3 {
+                font-size: clamp(14px, 3vw, 16px);
+                margin-top: 24px;
+                margin-bottom: 10px;
+            }
+
+            .documentation p,
+            .documentation ul.plan-features li,
+            .documentation ol li {
+                font-size: clamp(12px, 2.5vw, 13px);
+                line-height: 1.7;
+            }
+
+            .documentation pre {
+                padding: 10px;
+                font-size: clamp(9px, 1.8vw, 11px);
+                border-radius: 6px;
+            }
+
+            .documentation code {
+                font-size: clamp(9px, 1.8vw, 11px);
+                padding: 2px 4px;
+            }
+
+            .support-section {
+                padding: 12px;
+                margin-top: 32px;
+                border-radius: 8px;
+            }
+
+            .content {
+                padding: 40px 0 !important;
+            }
+
+            .footer-bottom {
+                font-size: clamp(10px, 2vw, 11px);
+                padding: 0 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="logo">
+                    <span class="premium">PREMIUM</span><span class="host">HOST</span>
+                </a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+                <nav class="nav-menu">
+                    <a href="../index.html" class="btn btn-primary">Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="content" style="padding: 120px 0; background-color: var(--light);">
+        <div class="container">
+            <div class="documentation" data-aos="fade-up" data-aos-duration="800">
+                <h1 data-aos="fade-down" data-aos-duration="800">PremiumHost Website Template</h1>
+                <p class="tagline" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    Modern, responsive web hosting template for professional businesses
+                </p>
+
+                <h2 id="overview">Overview</h2>
+                <p>PremiumHost is a sleek, responsive web hosting template built with HTML, CSS, and JavaScript. Designed for hosting providers and tech businesses, it offers a clean aesthetic, smooth animations, and a mobile-friendly layout. This documentation provides comprehensive instructions for setting up, customizing, and deploying the template.</p>
+
+                <h2 id="features">Features</h2>
+                <ul class="plan-features">
+                    <li>Responsive design optimized for desktops, tablets, and mobile devices</li>
+                    <li>Smooth animations powered by AOS (Animate On Scroll)</li>
+                    <li>Modular code with organized CSS and JavaScript files</li>
+                    <li>Interactive elements: mobile-friendly hamburger menu, smooth scrolling, hover effects</li>
+                    <li>Highly customizable: modify colors, content, and layouts easily</li>
+                    <li>SEO-friendly with semantic HTML and clean code</li>
+                </ul>
+
+                <h2>Project Structure</h2>
+                <p>The template is structured for clarity and ease of use:</p>
+                <pre>
+premiumhost-template/
+├── assets/
+│   ├── css/
+│   │   └── style.css        # Main stylesheet with custom styles
+│   └── js/
+│       └── script.js        # JavaScript for interactivity and animations
+├── docs/
+│   └── index.html           # This is the documentation file
+├── license/
+│   └── index.html           # This is the license file
+├── index.html               # Main HTML file with all sections
+└── README.md                # Markdown documentation for GitHub
+                </pre>
+                <ul class="plan-features">
+                    <li><code>index.html</code>: Contains the HTML structure for all sections (header, hero, about, pricing, etc.).</li>
+                    <li><code>assets/css/style.css</code>: Defines styles with CSS variables for easy customization.</li>
+                    <li><code>assets/js/script.js</code>: Manages interactivity (e.g., hamburger menu, scroll effects, AOS initialization).</li>
+                </ul>
+
+                <h2 id="setup">Setup Instructions</h2>
+                <ol>
+                    <li><strong>Clone or Download the Repository</strong>:
+                        <p>Clone using Git:</p>
+                        <pre>git clone <repository-url></pre>
+                        <p>Or download the ZIP file and extract it.</p>
+                    </li>
+                    <li><strong>Open the Project</strong>:
+                        <p>Navigate to the project folder:</p>
+                        <pre>cd premiumhost-template</pre>
+                        <p>Open <code>index.html</code> in a web browser to preview locally.</p>
+                    </li>
+                    <li><strong>Install Dependencies</strong>:
+                        <p>The template uses AOS (Animate On Scroll) via CDN. No local installations are required.</p>
+                        <p>Ensure an internet connection to load external dependencies.</p>
+                    </li>
+                    <li><strong>Edit Files</strong>:
+                        <p>Use a text editor (e.g., VS Code, Sublime Text) to modify <code>index.html</code>, <code>style.css</code>, or <code>script.js</code>.</p>
+                    </li>
+                </ol>
+
+                <h2 id="customization">Customization Guide</h2>
+                <h3>Branding</h3>
+                <ul class="plan-features">
+                    <li><strong>Logo</strong>:
+                        <p>Update the logo text in <code>index.html</code> (header and footer):</p>
+                        <pre><a href="#" class="logo">
+    <span class="premium">YOUR_BRAND</span><span class="host">NAME</span>
+</a></pre>
+                        <p>For an image logo, replace with an <code><img></code> tag and style in <code>style.css</code>:</p>
+                        <pre>.logo img {
+    height: 40px;
+    width: auto;
+}</pre>
+                    </li>
+                    <li><strong>Colors</strong>:
+                        <p>Modify CSS variables in <code>style.css</code> under <code>:root</code>:</p>
+                        <pre>:root {
+    --primary: #0078ff; /* Primary brand color */
+    --secondary: #1e2a3b; /* Secondary color */
+    --light: #f7f9fc;
+    --dark: #101823;
+    --text: #4a5568;
+    --heading: #1a202c;
+    --success: #38b2ac;
+}</pre>
+                    </li>
+                </ul>
+
+                <h3>Content</h3>
+                <ul class="plan-features">
+                    <li><strong>Text Content</strong>:
+                        <p>Edit headings, paragraphs, and buttons in <code>index.html</code>.</p>
+                    </li>
+                </ul>
+
+                <h3>Styling</h3>
+                <ul class="plan-features">
+                    <li><strong>Global Styles</strong>:
+                        <p>Change fonts or spacing in <code>style.css</code>:</p>
+                        <pre>* {
+    font-family: 'YourNewFont', sans-serif;
+}</pre>
+                        <p>Import custom fonts in <code>index.html</code>:</p>
+                        <pre><link href="https://fonts.googleapis.com/css2?family=YourNewFont&display=swap" rel="stylesheet"></pre>
+                    </li>
+                    <li><strong>Section-Specific Styles</strong>:
+                        <p>Update section styles in <code>style.css</code>. Example for hero background:</p>
+                        <pre>.hero {
+    background-image: linear-gradient(135deg, rgba(30, 42, 59, 0.9), rgba(16, 24, 35, 0.50)), url('assets/images/your-image.jpg');
+}</pre>
+                    </li>
+                    <li><strong>Responsive Design</strong>:
+                        <p>Adjust mobile styles in <code>style.css</code> media queries:</p>
+                        <pre>@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+}</pre>
+                    </li>
+                </ul>
+
+                <h3>JavaScript Functionality</h3>
+                <ul class="plan-features">
+                    <li><strong>AOS Animations</strong>:
+                        <p>Customize settings in <code>script.js</code>:</p>
+                        <pre>AOS.init({
+    once: true,
+    offset: 100,
+    duration: 800,
+    easing: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+});</pre>
+                        <p>Modify <code>data-aos</code> attributes in <code>index.html</code> (e.g., <code>fade-up</code>, <code>fade-scale</code>).</p>
+                    </li>
+                    <li><strong>Hamburger Menu</strong>:
+                        <p>Adjust toggle behavior in <code>script.js</code>:</p>
+                        <pre>hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navUl.classList.toggle('active');
+});</pre>
+                    </li>
+                    <li><strong>Scroll Effects</strong>:
+                        <p>Customize header scroll effect in <code>script.js</code>:</p>
+                        <pre>window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});</pre>
+                    </li>
+                </ul>
+
+                <h3>Images</h3>
+                <ul class="plan-features">
+                    <li><strong>Background Images</strong>:
+                        <p>Update the hero image in <code>style.css</code>:</p>
+                        <pre>.hero {
+    background-image: linear-gradient(135deg, rgba(30, 42, 59, 0.9), rgba(16, 24, 35, 0.50)), url('assets/images/your-image.jpg');
+}</pre>
+                        <p>Place images in <code>assets/images/</code> (create if needed).</p>
+                    </li>
+                    <li><strong>Client Avatars and Partner Logos</strong>:
+                        <p>Update sources in <code>index.html</code>:</p>
+                        <pre><img src="assets/images/your-client-image.jpg" alt="Client Name">
+<img src="assets/images/your-partner-logo.png" alt="Partner Name" class="partner-logo"></pre>
+                        <p>Optimize images (e.g., PNG, WebP) for web performance.</p>
+                    </li>
+                </ul>
+
+                <h2>Dependencies</h2>
+                <p>The template uses external CDNs:</p>
+                <ul class="plan-features">
+                    <li><strong>AOS (Animate On Scroll)</strong>:
+                        <ul class="plan-features">
+                            <li>CSS: <code>https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css</code></li>
+                            <li>JS: <code>https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Font Awesome</strong>:
+                        <ul class="plan-features">
+                            <li>CSS: <code>https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css</code></li>
+                        </ul>
+                    </li>
+                    <li>No local installations are required.</li>
+                </ul>
+
+                <h2 id="deployment">Deployment</h2>
+                <ol>
+                    <li><strong>Local Testing</strong>:
+                        <p>Open <code>index.html</code> or use a local server:</p>
+                        <pre>npx http-server</pre>
+                    </li>
+                    <li><strong>Hosting</strong>:
+                        <p>Upload the project folder to a web host (e.g., Netlify, Vercel, cPanel).</p>
+                        <p>Include the <code>assets/</code> folder for styles and scripts.</p>
+                    </li>
+                    <li><strong>Static Site Hosting</strong>:
+                        <ul class="plan-features">
+                            <li><strong>Netlify</strong>: Drag and drop the folder, set the public directory to root.</li>
+                            <li><strong>GitHub Pages</strong>: Push to GitHub, enable Pages in settings (main branch).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Domain Configuration</strong>:
+                        <p>Point your domain to the host’s nameservers.</p>
+                        <p>Use absolute URLs in <code>index.html</code> if needed.</p>
+                    </li>
+                </ol>
+
+                <h2>Troubleshooting</h2>
+                <ul class="plan-features">
+                    <li><strong>Animations Not Working</strong>:
+                        <p>Verify AOS CDN accessibility.</p>
+                        <p>Ensure <code>AOS.init()</code> is in <code>script.js</code>.</p>
+                        <p>Check <code>data-aos</code> attributes in <code>index.html</code>.</p>
+                    </li>
+                    <li><strong>Mobile Menu Issues</strong>:
+                        <p>Confirm hamburger script in <code>script.js</code>.</p>
+                        <p>Review media queries in <code>style.css</code>.</p>
+                    </li>
+                    <li><strong>Broken Images or Icons</strong>:
+                        <p>Check image paths and CDN accessibility (e.g., Font Awesome).</p>
+                        <p>Use relative paths (e.g., <code>assets/images/</code>).</p>
+                    </li>
+                    <li><strong>Contact Form</strong>:
+                        <p>The form is a placeholder. Integrate with a backend (e.g., Formspree, Netlify Forms).</p>
+                    </li>
+                </ul>
+
+                <h2>Contributing</h2>
+                <p>We welcome contributions! To contribute:</p>
+                <ol>
+                    <li>Fork the repository.</li>
+                    <li>Create a branch: <code>git checkout -b feature/your-feature</code>.</li>
+                    <li>Commit changes: <code>git commit -m "Add your feature"</code>.</li>
+                    <li>Push: <code>git push origin feature/your-feature</code>.</li>
+                    <li>Open a pull request.</li>
+                </ol>
+                <p>Ensure code follows the template’s style and includes comments.</p>
+
+                <h2>License</h2>
+                <p>This project is licensed under the <a href="../license/index.html">PremiumHost License</a>. See the LICENSE file for details.</p>
+
+                <div class="support-section">
+                    <h2>Support</h2>
+                    <p>For assistance, email <a href="mailto:support@premiumhost.com" class="btn btn-primary">support@premiumhost.com</a> or open an issue on the repository.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <div>© 2025 PremiumHost. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            // Toggle between hamburger and close icon
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+    </script>
+</body>
+</html>
