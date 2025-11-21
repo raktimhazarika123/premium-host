@@ -39,11 +39,11 @@ premiumhost-template/
 ├── assets/
 │   ├── css/
 │   │   └── style.css        # Main stylesheet with custom styles
+│   ├── images/              # ← Added empty images folder 
 │   └── js/
 │       └── script.js        # JavaScript for interactivity and animations
 ├── index.html               # Main HTML file with all sections
 └── README.md                # This documentation file
-
 
 index.html: Contains the HTML structure for all sections (header, hero, about, pricing, etc.).
 assets/css/style.css: Defines styles with CSS variables for easy customization.
