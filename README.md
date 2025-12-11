@@ -39,11 +39,15 @@ premiumhost-template/
 ├── assets/
 │   ├── css/
 │   │   └── style.css        # Main stylesheet with custom styles
-│   ├── images/              # ← Added empty images folder 
+│   ├── images/              # All images go here (logos, hero, icons, etc.)
 │   └── js/
 │       └── script.js        # JavaScript for interactivity and animations
+├── documentation/
+│   └── index.html           # This is the documentation file
+├── license/
+│   └── index.html           # This is the license file
 ├── index.html               # Main HTML file with all sections
-└── README.md                # This documentation file
+└── README.md                # Markdown documentation for GitHub
 
 index.html: Contains the HTML structure for all sections (header, hero, about, pricing, etc.).
 assets/css/style.css: Defines styles with CSS variables for easy customization.
